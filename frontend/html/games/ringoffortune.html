@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wheel of Fortune - Pyramid Casino</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/game.css">
+    <link rel="stylesheet" href="../../css/ringoffortune.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="../../images/Logo.png" alt="Pyramid Casino Logo" class="logo-img">
+                <span>Pyramid Casino</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../../index.html">หน้าแรก</a></li>
+                <li><a href="../all-games.html">เกมทั้งหมด</a></li>
+                <li><a href="../../index.html#promotions">โปรโมชั่น</a></li>
+                <li><a href="../../index.html#about">เกี่ยวกับเรา</a></li>
+                <li><a href="../../index.html#contact">ติดต่อ</a></li>
+            </ul>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Game Container -->
+    <div class="wheel-game-container">
+        <!-- Game Header -->
+        <div class="wheel-game-header">
+            <div class="game-title-section">
+                <h1><i class="fas fa-dharmachakra"></i> Wheel of Fortune</h1>
+                <p class="game-subtitle">Spin the wheel and test your luck!</p>
+            </div>
+            <div class="balance-section">
+                <div class="balance-display">
+                    <span class="balance-label">Balance:</span>
+                    <span class="balance-amount" id="balance">10,000.00</span>
+                    <span class="currency">฿</span>
+                </div>
+                <button class="demo-mode-btn" id="demoModeBtn">
+                    <i class="fas fa-flask"></i> Demo Mode
+                </button>
+            </div>
+        </div>
+
+        <!-- Main Game Area -->
+        <div class="wheel-main-area">
+            <!-- Left Panel: Betting Controls -->
+            <div class="betting-controls-panel">
+                <!-- Tabs -->
+                <div class="betting-tabs">
+                    <button class="betting-tab active" data-tab="manual">
+                        <i class="fas fa-hand-pointer"></i> Manual
+                    </button>
+                    <button class="betting-tab" data-tab="auto">
+                        <i class="fas fa-robot"></i> Auto
+                    </button>
+                    <button class="betting-tab" data-tab="advanced">
+                        <i class="fas fa-cog"></i> Advanced
+                    </button>
+                </div>
+
+                <!-- Manual Tab Content -->
+                <div class="tab-content active" id="manualTab">
+                    <!-- Bet Amount Section -->
+                    <div class="betting-section">
+                        <label class="section-label">
+                            <i class="fas fa-coins"></i> Bet Amount
+                        </label>
+                        <div class="amount-input-group">
+                            <button class="amount-btn" id="manualHalfBtn">½</button>
+                            <input type="number" id="manualBetAmount" value="10" min="0" step="1">
+                            <button class="amount-btn" id="manualDoubleBtn">2×</button>
+                        </div>
+                        <div class="quick-amounts">
+                            <button class="quick-amount-btn" data-amount="10">10</button>
+                            <button class="quick-amount-btn" data-amount="100">100</button>
+                            <button class="quick-amount-btn" data-amount="1000">1K</button>
+                            <button class="quick-amount-btn" data-amount="10000">10K</button>
+                            <button class="quick-amount-btn" data-amount="max">MAX</button>
+                        </div>
+                    </div>
+
+                    <!-- Color Selection -->
+                    <div class="betting-section">
+                        <label class="section-label">
+                            <i class="fas fa-palette"></i> Select Color
+                        </label>
+                        <div class="color-selection-grid">
+                            <button class="color-bet-btn" data-color="gray" data-multiplier="2">
+                                <div class="color-indicator gray-color"></div>
+                                <span class="color-name">Gray</span>
+                                <span class="color-multiplier">×2</span>
+                                <span class="color-chance">40%</span>
+                            </button>
+                            <button class="color-bet-btn" data-color="green" data-multiplier="3">
+                                <div class="color-indicator green-color"></div>
+                                <span class="color-name">Green</span>
+                                <span class="color-multiplier">×3</span>
+                                <span class="color-chance">35%</span>
+                            </button>
+                            <button class="color-bet-btn" data-color="blue" data-multiplier="5">
+                                <div class="color-indicator blue-color"></div>
+                                <span class="color-name">Blue</span>
+                                <span class="color-multiplier">×5</span>
+                                <span class="color-chance">20%</span>
+                            </button>
+                            <button class="color-bet-btn" data-color="purple" data-multiplier="50">
+                                <div class="color-indicator purple-color"></div>
+                                <span class="color-name">Purple</span>
+                                <span class="color-multiplier">×50</span>
+                                <span class="color-chance">5%</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Win Amount Display -->
+                    <div class="betting-section">
+                        <div class="win-amount-display">
+                            <span class="win-label">Potential Win:</span>
+                            <span class="win-amount" id="manualWinAmount">0.00</span>
+                            <span class="currency">฿</span>
+                        </div>
+                    </div>
+
+                    <!-- Spin Button -->
+                    <button class="spin-now-btn" id="spinNowBtn" disabled>
+                        <i class="fas fa-play-circle"></i> SPIN NOW
+                    </button>
+
+                    <p class="demo-info">
+                        <i class="fas fa-info-circle"></i> Betting with 0 will enter demo mode.
+                    </p>
+                </div>
+
+                <!-- Auto Tab Content -->
+                <div class="tab-content" id="autoTab">
+                    <!-- Bet Amount -->
+                    <div class="betting-section">
+                        <label class="section-label">
+                            <i class="fas fa-coins"></i> Bet Amount
+                        </label>
+                        <div class="amount-input-group">
+                            <button class="amount-btn" id="autoHalfBtn">½</button>
+                            <input type="number" id="autoBetAmount" value="10" min="0" step="1">
+                            <button class="amount-btn" id="autoDoubleBtn">2×</button>
+                        </div>
+                    </div>
+
+                    <!-- Color Selection -->
+                    <div class="betting-section">
+                        <label class="section-label">
+                            <i class="fas fa-palette"></i> Select Color
+                        </label>
+                        <div class="color-selection-grid">
+                            <button class="color-bet-btn" data-color="gray" data-multiplier="2">
+                                <div class="color-indicator gray-color"></div>
+                                <span class="color-name">Gray</span>
+                                <span class="color-multiplier">×2</span>
+                            </button>
+                            <button class="color-bet-btn" data-color="green" data-multiplier="3">
+                                <div class="color-indicator green-color"></div>
+                                <span class="color-name">Green</span>
+                                <span class="color-multiplier">×3</span>
+                            </button>
+                            <button class="color-bet-btn" data-color="blue" data-multiplier="5">
+                                <div class="color-indicator blue-color"></div>
+                                <span class="color-name">Blue</span>
+                                <span class="color-multiplier">×5</span>
+                            </button>
+                            <button class="color-bet-btn" data-color="purple" data-multiplier="50">
+                                <div class="color-indicator purple-color"></div>
+                                <span class="color-name">Purple</span>
+                                <span class="color-multiplier">×50</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Number of Bets -->
+                    <div class="betting-section">
+                        <label class="section-label">
+                            <i class="fas fa-infinity"></i> Number of Bets
+                        </label>
+                        <div class="number-bets-input-group">
+                            <input type="text" id="numberOfBets" value="∞" placeholder="∞">
+                            <div class="preset-bets">
+                                <button class="preset-bet-btn" data-bets="10">10</button>
+                                <button class="preset-bet-btn" data-bets="100">100</button>
+                                <button class="preset-bet-btn" data-bets="∞">∞</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- On Win -->
+                    <div class="betting-section">
+                        <label class="section-label">
+                            <i class="fas fa-trophy"></i> On Win
+                        </label>
+                        <div class="win-loss-controls">
+                            <button class="strategy-btn active" data-strategy="reset">Reset</button>
+                            <button class="strategy-btn" data-strategy="increase">Increase by</button>
+                            <div class="percentage-input">
+                                <input type="number" id="onWinPercent" value="0" min="0" max="100" disabled>
+                                <span>%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- On Loss -->
+                    <div class="betting-section">
+                        <label class="section-label">
+                            <i class="fas fa-times-circle"></i> On Loss
+                        </label>
+                        <div class="win-loss-controls">
+                            <button class="strategy-btn active" data-strategy="reset">Reset</button>
+                            <button class="strategy-btn" data-strategy="increase">Increase by</button>
+                            <div class="percentage-input">
+                                <input type="number" id="onLossPercent" value="0" min="0" max="100" disabled>
+                                <span>%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Stop Conditions -->
+                    <div class="betting-section">
+                        <label class="section-label">
+                            <i class="fas fa-hand-paper"></i> Stop Conditions
+                        </label>
+                        <div class="stop-conditions">
+                            <div class="stop-condition-row">
+                                <span>Stop on Win:</span>
+                                <input type="number" id="stopOnWin" value="0" min="0" step="1" placeholder="0">
+                            </div>
+                            <div class="stop-condition-row">
+                                <span>Stop on Loss:</span>
+                                <input type="number" id="stopOnLoss" value="0" min="0" step="1" placeholder="0">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Auto Bet Button -->
+                    <button class="auto-bet-btn" id="startAutoBetBtn">
+                        <i class="fas fa-play"></i> START AUTO BET
+                    </button>
+
+                    <!-- Current Bet Counter -->
+                    <div class="bet-counter" id="betCounter" style="display: none;">
+                        <span>Bets: <strong id="currentBetCount">0</strong> / <strong id="totalBetCount">∞</strong></span>
+                        <span>Profit: <strong id="autoProfitAmount">0.00</strong> ฿</span>
+                    </div>
+                </div>
+
+                <!-- Advanced Tab Content -->
+                <div class="tab-content" id="advancedTab">
+                    <!-- Strategy Selection -->
+                    <div class="betting-section">
+                        <label class="section-label">
+                            <i class="fas fa-brain"></i> Select Strategy
+                        </label>
+                        <div class="strategy-selection">
+                            <button class="strategy-option-btn active" data-strategy="none">
+                                <span class="strategy-name">None</span>
+                                <span class="strategy-desc">Manual betting</span>
+                            </button>
+                            <button class="strategy-option-btn" data-strategy="martingale">
+                                <span class="strategy-name">Martingale</span>
+                                <span class="strategy-desc">Double on loss</span>
+                            </button>
+                            <button class="strategy-option-btn" data-strategy="reverse">
+                                <span class="strategy-name">Reverse Martingale</span>
+                                <span class="strategy-desc">Double on win</span>
+                            </button>
+                            <button class="strategy-option-btn" data-strategy="custom">
+                                <span class="strategy-name">Custom</span>
+                                <span class="strategy-desc">Create your own</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Custom Strategy Builder -->
+                    <div class="betting-section" id="customStrategySection" style="display: none;">
+                        <label class="section-label">
+                            <i class="fas fa-edit"></i> Custom Conditions
+                        </label>
+                        <div class="custom-conditions-list" id="customConditionsList">
+                            <!-- Conditions will be added here -->
+                        </div>
+                        <button class="create-condition-btn" id="createConditionBtn">
+                            <i class="fas fa-plus"></i> Create Condition
+                        </button>
+                    </div>
+
+                    <!-- Strategy Info -->
+                    <div class="betting-section">
+                        <div class="strategy-info-box" id="strategyInfoBox">
+                            <h4>Strategy Information</h4>
+                            <p id="strategyInfoText">Select a strategy to see details.</p>
+                        </div>
+                    </div>
+
+                    <!-- Apply Strategy Button -->
+                    <button class="apply-strategy-btn" id="applyStrategyBtn">
+                        <i class="fas fa-check"></i> APPLY STRATEGY
+                    </button>
+                </div>
+            </div>
+
+            <!-- Center Panel: Wheel Display -->
+            <div class="wheel-display-panel">
+                <!-- Wheel Container -->
+                <div class="wheel-outer-container">
+                    <div class="wheel-pointer-indicator">
+                        <div class="pointer-triangle"></div>
+                    </div>
+                    <canvas id="wheelCanvas" width="600" height="600"></canvas>
+                    <div class="wheel-center-circle">
+                        <i class="fas fa-dharmachakra wheel-icon"></i>
+                    </div>
+                </div>
+
+                <!-- Result Display -->
+                <div class="result-display" id="resultDisplay" style="display: none;">
+                    <div class="result-content">
+                        <div class="result-icon" id="resultIcon">🎉</div>
+                        <div class="result-text" id="resultText">YOU WIN!</div>
+                        <div class="result-amount" id="resultAmount">+100.00 ฿</div>
+                        <div class="result-details">
+                            <span>Color: <strong id="resultColor">Green</strong></span>
+                            <span>Multiplier: <strong id="resultMultiplier">×3</strong></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Panel: Game Info & History -->
+            <div class="game-info-panel">
+                <!-- Statistics Section -->
+                <div class="info-section">
+                    <h3><i class="fas fa-chart-bar"></i> Statistics</h3>
+                    <div class="statistics-grid">
+                        <div class="stat-item">
+                            <span class="stat-label">Total Spins:</span>
+                            <span class="stat-value" id="totalSpins">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Total Won:</span>
+                            <span class="stat-value green" id="totalWon">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Total Lost:</span>
+                            <span class="stat-value red" id="totalLost">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Net Profit:</span>
+                            <span class="stat-value" id="netProfit">0.00 ฿</span>
+                        </div>
+                    </div>
+
+                    <!-- Color Distribution -->
+                    <div class="color-distribution">
+                        <h4>Color Distribution (Last 100)</h4>
+                        <div class="distribution-bars">
+                            <div class="distribution-row">
+                                <div class="color-indicator gray-color"></div>
+                                <div class="distribution-bar">
+                                    <div class="bar-fill gray-bar" id="grayBar" style="width: 0%"></div>
+                                </div>
+                                <span class="distribution-percent" id="grayPercent">0%</span>
+                            </div>
+                            <div class="distribution-row">
+                                <div class="color-indicator green-color"></div>
+                                <div class="distribution-bar">
+                                    <div class="bar-fill green-bar" id="greenBar" style="width: 0%"></div>
+                                </div>
+                                <span class="distribution-percent" id="greenPercent">0%</span>
+                            </div>
+                            <div class="distribution-row">
+                                <div class="color-indicator blue-color"></div>
+                                <div class="distribution-bar">
+                                    <div class="bar-fill blue-bar" id="blueBar" style="width: 0%"></div>
+                                </div>
+                                <span class="distribution-percent" id="bluePercent">0%</span>
+                            </div>
+                            <div class="distribution-row">
+                                <div class="color-indicator purple-color"></div>
+                                <div class="distribution-bar">
+                                    <div class="bar-fill purple-bar" id="purpleBar" style="width: 0%"></div>
+                                </div>
+                                <span class="distribution-percent" id="purplePercent">0%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Game History Section -->
+                <div class="info-section">
+                    <h3><i class="fas fa-history"></i> Recent History</h3>
+                    <div class="history-list" id="historyList">
+                        <div class="empty-history">
+                            <i class="fas fa-clock"></i>
+                            <p>No spins yet. Start playing!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Condition Modal -->
+    <div class="modal" id="conditionModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Create Custom Condition</h3>
+                <button class="modal-close" id="closeConditionModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="condition-builder">
+                    <div class="condition-row">
+                        <label>If</label>
+                        <select id="conditionType">
+                            <option value="loseStreak">Lose Streak</option>
+                            <option value="winStreak">Win Streak</option>
+                            <option value="totalLoss">Total Loss Exceeds</option>
+                            <option value="totalWin">Total Win Exceeds</option>
+                        </select>
+                    </div>
+                    <div class="condition-row">
+                        <label>Value</label>
+                        <input type="number" id="conditionValue" value="3" min="1">
+                    </div>
+                    <div class="condition-row">
+                        <label>Then</label>
+                        <select id="conditionAction">
+                            <option value="stop">Stop Betting</option>
+                            <option value="switchColor">Switch Color</option>
+                            <option value="reset">Reset Bet Amount</option>
+                            <option value="double">Double Bet Amount</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" id="cancelConditionBtn">Cancel</button>
+                <button class="btn-primary" id="saveConditionBtn">Save Condition</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sound Toggle -->
+    <button class="sound-toggle" id="soundToggle">
+        <i class="fas fa-volume-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="../../js/script.js"></script>
+    <script src="../../js/game.js"></script>
+    <script src="../../js/ringoffortune.js"></script>
+</body>
+</html>

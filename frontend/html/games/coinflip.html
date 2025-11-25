@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoinFlip - Pyramid Casino</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/game.css">
+    <link rel="stylesheet" href="../../css/coinflip.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="../../images/Logo.png" alt="Pyramid Casino Logo" class="logo-img">
+                <span>Pyramid Casino</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../../index.html">หน้าแรก</a></li>
+                <li><a href="../all-games.html">เกมทั้งหมด</a></li>
+                <li><a href="../../index.html#promotions">โปรโมชั่น</a></li>
+                <li><a href="../../index.html#about">เกี่ยวกับเรา</a></li>
+                <li><a href="../../index.html#contact">ติดต่อ</a></li>
+            </ul>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Game Container -->
+    <div class="game-container">
+        <!-- Game Header -->
+        <div class="game-header">
+            <div class="game-title">
+                <img src="../../images/game images/CoinFliplogo.png" alt="CoinFlip" class="game-logo">
+                <h1>CoinFlip</h1>
+            </div>
+            <div class="game-info">
+                <div class="balance-info">
+                    <span class="balance-label">ยอดเงิน:</span>
+                    <span class="balance-amount" id="balance">1000</span>
+                    <span class="currency">บาท</span>
+                </div>
+                <div class="game-stats">
+                    <span class="stat-item">
+                        <i class="fas fa-users"></i>
+                        <span id="playerCount">1,234</span>
+                    </span>
+                    <span class="stat-item">
+                        <i class="fas fa-star"></i>
+                        <span>4.7</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game Content -->
+        <div class="game-content">
+            <!-- Betting Panel -->
+            <div class="betting-panel">
+                <!-- Betting Tabs -->
+                <div class="betting-tabs">
+                    <button class="tab-btn active" data-tab="manual">Manual</button>
+                    <button class="tab-btn" data-tab="auto">Auto</button>
+                </div>
+
+                <!-- Manual Betting Panel -->
+                <div class="tab-panel active" id="manual">
+                    <!-- Amount Section -->
+                    <div class="amount-section">
+                        <label class="section-label">Amount</label>
+                        <div class="amount-controls">
+                            <div class="amount-input-group">
+                                <span class="currency-symbol">฿</span>
+                                <input type="number" id="betAmount" value="10" min="1" max="1000" step="1">
+                            </div>
+                            <div class="amount-control-buttons">
+                                <button class="amount-btn" id="betHalf">1/2</button>
+                                <button class="amount-btn" id="betDouble">2x</button>
+                                <button class="amount-btn" id="betUp">▲</button>
+                                <button class="amount-btn" id="betDown">▼</button>
+                            </div>
+                            <div class="preset-amounts">
+                                <button class="preset-btn" data-amount="10">10</button>
+                                <button class="preset-btn" data-amount="100">100</button>
+                                <button class="preset-btn" data-amount="1000">1.0k</button>
+                                <button class="preset-btn" data-amount="10000">10.0k</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Side Selection -->
+                    <div class="side-selection">
+                        <label class="section-label">Choose Side</label>
+                        <div class="side-buttons">
+                            <button class="side-btn" id="headBtn" data-side="head">
+                                <img src="../../images/game images/coinflip game images/head.png" alt="Head" class="side-icon">
+                                <span>Head</span>
+                            </button>
+                            <button class="side-btn" id="tailBtn" data-side="tail">
+                                <img src="../../images/game images/coinflip game images/tail.png" alt="Tail" class="side-icon">
+                                <span>Tail</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="action-buttons">
+                        <button class="action-btn flip-btn" id="flipCoin">
+                            <i class="fas fa-coins"></i>
+                            Flip Coin
+                        </button>
+                    </div>
+
+                    <!-- Game History -->
+                    <div class="game-history">
+                        <h3>ประวัติการเล่น</h3>
+                        <div class="history-list" id="historyList">
+                            <!-- History items will be added here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Auto Betting Panel -->
+                <div class="tab-panel" id="auto">
+                    <!-- Amount Section -->
+                    <div class="amount-section">
+                        <label class="section-label">Amount</label>
+                        <div class="amount-controls">
+                            <div class="amount-input-group">
+                                <span class="currency-symbol">฿</span>
+                                <input type="number" id="autoBetAmount" value="10" min="1" max="1000" step="1">
+                            </div>
+                            <div class="amount-control-buttons">
+                                <button class="amount-btn" id="autoBetHalf">1/2</button>
+                                <button class="amount-btn" id="autoBetDouble">2x</button>
+                                <button class="amount-btn" id="autoBetUp">▲</button>
+                                <button class="amount-btn" id="autoBetDown">▼</button>
+                            </div>
+                            <div class="preset-amounts">
+                                <button class="preset-btn" data-amount="10">10</button>
+                                <button class="preset-btn" data-amount="100">100</button>
+                                <button class="preset-btn" data-amount="1000">1.0k</button>
+                                <button class="preset-btn" data-amount="10000">10.0k</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Side Selection -->
+                    <div class="side-selection">
+                        <label class="section-label">Choose Side</label>
+                        <div class="side-buttons">
+                            <button class="side-btn" id="autoHeadBtn" data-side="head">
+                                <img src="../../images/game images/coinflip game images/head.png" alt="Head" class="side-icon">
+                                <span>Head</span>
+                            </button>
+                            <button class="side-btn" id="autoTailBtn" data-side="tail">
+                                <img src="../../images/game images/coinflip game images/tail.png" alt="Tail" class="side-icon">
+                                <span>Tail</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Number of Bets -->
+                    <div class="number-bets-section">
+                        <label class="section-label">Number of Bets</label>
+                        <div class="number-bets-controls">
+                            <input type="text" id="numberOfBets" value="∞" placeholder="∞">
+                            <div class="preset-bets">
+                                <button class="preset-btn" data-bets="∞">∞</button>
+                                <button class="preset-btn" data-bets="10">10</button>
+                                <button class="preset-btn" data-bets="100">100</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Stop Conditions -->
+                    <div class="stop-conditions">
+                        <div class="stop-condition">
+                            <label class="section-label">Stop on win</label>
+                            <input type="number" id="stopOnWin" value="0" min="0" placeholder="0">
+                        </div>
+                        <div class="stop-condition">
+                            <label class="section-label">Stop on loss</label>
+                            <input type="number" id="stopOnLoss" value="0" min="0" placeholder="0">
+                        </div>
+                    </div>
+
+                    <!-- Auto Bet Action -->
+                    <div class="action-buttons">
+                        <button class="action-btn auto-bet-btn" id="startAutoBet">
+                            <i class="fas fa-play"></i>
+                            Start Auto Bet
+                        </button>
+                    </div>
+
+                    <!-- Disclaimer -->
+                    <div class="disclaimer">
+                        <i class="fas fa-question-circle"></i>
+                        <p>Use of script is optional and players must take full responsibility for any attendant risks. We will not be held liable in this regard.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Game Board -->
+            <div class="game-board">
+                <!-- Board Header -->
+                <div class="board-header">
+                    <h2>COINFLIP</h2>
+                    <div class="board-info">
+                        <span class="multiplier-info">MULTIPLIER: <span id="currentMultiplier">2.00x</span></span>
+                        <div class="game-progress">
+                            <span class="selected-side">Selected: <span id="selectedSide">-</span></span>
+                            <span class="result-side">Result: <span id="resultSide">-</span></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coin Display -->
+                <div class="coin-container">
+                    <div class="coin" id="coin">
+                        <div class="coin-face coin-head">
+                            <img src="../../images/game images/coinflip game images/head.png" alt="Head" class="coin-image">
+                        </div>
+                        <div class="coin-face coin-tail">
+                            <img src="../../images/game images/coinflip game images/tail.png" alt="Tail" class="coin-image">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Game Controls -->
+                <div class="game-controls">
+                    <button class="control-btn new-game-btn" id="newGame">
+                        <i class="fas fa-play"></i>
+                        New Game
+                    </button>
+                    <button class="control-btn clear-btn" id="clearGame">
+                        <i class="fas fa-undo"></i>
+                        Clear Game
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Game Result Modal -->
+    <div class="game-result-modal" id="gameResultModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">ผลการเล่น</h3>
+                <button class="close-modal" id="closeModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="result-icon" id="resultIcon">🪙</div>
+                <div class="result-message" id="resultMessage">คุณชนะ!</div>
+                <div class="result-amount" id="resultAmount">+100 บาท</div>
+                <div class="result-details" id="resultDetails">
+                    <div class="side-result">
+                        <span class="label">Selected:</span>
+                        <span class="value" id="selectedResult">Head</span>
+                    </div>
+                    <div class="result-result">
+                        <span class="label">Result:</span>
+                        <span class="value" id="resultResult">Head</span>
+                    </div>
+                    <div class="multiplier-result">
+                        <span class="label">Multiplier:</span>
+                        <span class="value" id="multiplierResult">2.00x</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" id="continueBtn">เล่นต่อ</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../../js/script.js"></script>
+    <script src="../../js/game.js"></script>
+    <script src="../../js/coinflip.js"></script>
+</body>
+</html>

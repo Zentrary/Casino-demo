@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>เติมเงิน - Pyramid Casino</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Roboto:wght@300;400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    .deposit-container {
+      max-width: 800px;
+      margin: 120px auto 50px;
+      padding: 2rem;
+      background: rgba(26, 26, 46, 0.95);
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+      border: 2px solid #d4af37;
+    }
+
+    .deposit-header {
+      text-align: center;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 2px solid #d4af37;
+    }
+
+    .deposit-header h1 {
+      font-family: 'Cinzel', serif;
+      color: #d4af37;
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .deposit-header p {
+      color: #ccc;
+      font-size: 1.1rem;
+    }
+
+    .current-balance {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      padding: 1.5rem;
+      border-radius: 15px;
+      text-align: center;
+      margin-bottom: 2rem;
+      border: 2px solid #d4af37;
+    }
+
+    .current-balance-label {
+      color: #ccc;
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .current-balance-amount {
+      font-family: 'Cinzel', serif;
+      font-size: 2.5rem;
+      color: #d4af37;
+      font-weight: 700;
+    }
+
+    .deposit-form {
+      background: rgba(22, 33, 62, 0.5);
+      padding: 2rem;
+      border-radius: 15px;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      color: #d4af37;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+    }
+
+    .amount-input-group {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .amount-input-group .currency-symbol {
+      position: absolute;
+      left: 15px;
+      color: #d4af37;
+      font-size: 1.2rem;
+      font-weight: 600;
+      z-index: 1;
+    }
+
+    .amount-input-group input {
+      width: 100%;
+      padding: 1rem 1rem 1rem 2.5rem;
+      background: rgba(26, 26, 46, 0.8);
+      border: 2px solid rgba(212, 175, 55, 0.3);
+      border-radius: 10px;
+      color: #fff;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+    }
+
+    .amount-input-group input:focus {
+      outline: none;
+      border-color: #d4af37;
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+    }
+
+    .quick-amounts {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .quick-amount-btn {
+      padding: 0.8rem;
+      background: rgba(26, 26, 46, 0.8);
+      border: 2px solid rgba(212, 175, 55, 0.3);
+      border-radius: 10px;
+      color: #fff;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 1rem;
+    }
+
+    .quick-amount-btn:hover {
+      background: rgba(212, 175, 55, 0.2);
+      border-color: #d4af37;
+      transform: translateY(-2px);
+    }
+
+    .payment-methods {
+      margin-top: 2rem;
+    }
+
+    .payment-methods h3 {
+      color: #d4af37;
+      font-family: 'Cinzel', serif;
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+    }
+
+    .payment-options {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .payment-option {
+      padding: 1.5rem;
+      background: rgba(26, 26, 46, 0.8);
+      border: 2px solid rgba(212, 175, 55, 0.3);
+      border-radius: 10px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .payment-option:hover {
+      border-color: #d4af37;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 20px rgba(212, 175, 55, 0.2);
+    }
+
+    .payment-option.selected {
+      border-color: #d4af37;
+      background: rgba(212, 175, 55, 0.1);
+    }
+
+    .payment-option i {
+      font-size: 2.5rem;
+      color: #d4af37;
+      margin-bottom: 0.5rem;
+    }
+
+    .payment-option label {
+      color: #fff;
+      font-weight: 500;
+      cursor: pointer;
+      display: block;
+    }
+
+    .payment-option input[type="radio"] {
+      display: none;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 1.2rem;
+      background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+      border: none;
+      border-radius: 10px;
+      color: #1a1a2e;
+      font-size: 1.2rem;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 2rem;
+      transition: all 0.3s ease;
+      font-family: 'Cinzel', serif;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 30px rgba(212, 175, 55, 0.5);
+    }
+
+    .submit-btn:active {
+      transform: translateY(0);
+    }
+
+    .info-box {
+      background: rgba(212, 175, 55, 0.1);
+      border-left: 4px solid #d4af37;
+      padding: 1rem;
+      border-radius: 5px;
+      margin-top: 2rem;
+      color: #ccc;
+    }
+
+    .info-box i {
+      color: #d4af37;
+      margin-right: 0.5rem;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <img src="../images/Logo.png" alt="Pyramid Casino Logo" class="logo-img">
+        <span>Pyramid Casino</span>
+      </div>
+      <ul class="nav-menu">
+        <li><a href="../index.html">หน้าแรก</a></li>
+        <li><a href="all-games.html">เกมทั้งหมด</a></li>
+        <li><a href="deposit.html" class="active">เติมเงิน</a></li>
+      </ul>
+      <div class="nav-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Deposit Container -->
+  <div class="container">
+    <div class="deposit-container">
+      <div class="deposit-header">
+        <h1><i class="fas fa-wallet"></i> เติมเงิน</h1>
+        <p>เติมเงินเข้าบัญชีของคุณได้ง่ายๆ ด้วยวิธีการที่ปลอดภัย</p>
+      </div>
+
+      <div class="current-balance">
+        <span class="current-balance-label">ยอดเงินปัจจุบัน</span>
+        <div class="current-balance-amount" id="currentBalance">0 ฿</div>
+      </div>
+
+      <form class="deposit-form" id="depositForm">
+        <div class="form-group">
+          <label for="depositAmount"><i class="fas fa-money-bill-wave"></i> จำนวนเงินที่ต้องการเติม</label>
+          <div class="amount-input-group">
+            <span class="currency-symbol">฿</span>
+            <input type="number" id="depositAmount" name="amount" min="100" step="100" placeholder="0" required>
+          </div>
+          <div class="quick-amounts">
+            <button type="button" class="quick-amount-btn" data-amount="500">500 ฿</button>
+            <button type="button" class="quick-amount-btn" data-amount="1000">1,000 ฿</button>
+            <button type="button" class="quick-amount-btn" data-amount="2000">2,000 ฿</button>
+            <button type="button" class="quick-amount-btn" data-amount="5000">5,000 ฿</button>
+          </div>
+        </div>
+
+        <div class="payment-methods">
+          <h3><i class="fas fa-credit-card"></i> เลือกวิธีการชำระเงิน</h3>
+          <div class="payment-options">
+            <div class="payment-option" onclick="selectPaymentMethod('bank')">
+              <input type="radio" name="paymentMethod" id="bank" value="bank" required>
+              <i class="fas fa-university"></i>
+              <label for="bank">โอนเงินผ่านธนาคาร</label>
+            </div>
+            <div class="payment-option" onclick="selectPaymentMethod('promptpay')">
+              <input type="radio" name="paymentMethod" id="promptpay" value="promptpay" required>
+              <i class="fas fa-mobile-alt"></i>
+              <label for="promptpay">พร้อมเพย์</label>
+            </div>
+            <div class="payment-option" onclick="selectPaymentMethod('truemoney')">
+              <input type="radio" name="paymentMethod" id="truemoney" value="truemoney" required>
+              <i class="fas fa-wallet"></i>
+              <label for="truemoney">ทรูวอลเล็ต</label>
+            </div>
+            <div class="payment-option" onclick="selectPaymentMethod('crypto')">
+              <input type="radio" name="paymentMethod" id="crypto" value="crypto" required>
+              <i class="fab fa-bitcoin"></i>
+              <label for="crypto">สกุลเงินดิจิทัล</label>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="submit-btn">
+          <i class="fas fa-check-circle"></i> ยืนยันการเติมเงิน
+        </button>
+
+        <div class="info-box">
+          <i class="fas fa-info-circle"></i>
+          <strong>หมายเหตุ:</strong> การเติมเงินจะถูกดำเนินการภายใน 5-15
+          นาทีหลังจากได้รับการยืนยันจากผู้ให้บริการชำระเงิน
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+  <script src="../js/script.js"></script>
+  <script>
+
+    // Quick amount buttons
+    document.querySelectorAll('.quick-amount-btn').forEach(btn => {
+      btn.addEventListener('click', function () {
+        const amount = this.getAttribute('data-amount');
+        document.getElementById('depositAmount').value = amount;
+      });
+    });
+
+    // Payment method selection
+    function selectPaymentMethod(method) {
+      document.querySelectorAll('.payment-option').forEach(option => {
+        option.classList.remove('selected');
+      });
+      event.currentTarget.classList.add('selected');
+      document.getElementById(method).checked = true;
+    }
+
+    // Form submission
+    document.getElementById('depositForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const amount = parseFloat(document.getElementById('depositAmount').value);
+      const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked')?.value;
+
+      if (!paymentMethod) {
+        alert('กรุณาเลือกวิธีการชำระเงิน');
+        return;
+      }
+
+      if (amount < 100) {
+        alert('จำนวนเงินขั้นต่ำคือ 100 บาท');
+        return;
+      }
+
+      alert(`กำลังดำเนินการเติมเงินจำนวน ${amount.toLocaleString()} ฿\nวิธีการชำระเงิน: ${paymentMethod}\n\nกรุณารอการยืนยันจากระบบ`);
+
+      setTimeout(() => {
+        alert('เติมเงินสำเร็จ! เงินจะเข้าบัญชีภายใน 5-15 นาที');
+        const demoBalance = parseFloat(localStorage.getItem('demo_balance') || '0');
+        const newBalance = demoBalance + amount;
+        localStorage.setItem('demo_balance', String(newBalance));
+        const currentBalance = document.getElementById('currentBalance');
+        if (currentBalance) {
+          currentBalance.textContent = newBalance.toLocaleString() + ' ฿';
+        }
+
+        // Reset form
+        this.reset();
+        document.querySelectorAll('.payment-option').forEach(option => {
+          option.classList.remove('selected');
+        });
+      }, 1500);
+    });
+
+    // ตั้งค่ายอดเงินในเดโมจากค่าจำลอง
+    document.addEventListener('DOMContentLoaded', function () {
+      const currentBalance = document.getElementById('currentBalance');
+      const demoBalance = parseFloat(localStorage.getItem('demo_balance') || '0');
+      if (currentBalance) {
+        currentBalance.textContent = demoBalance.toLocaleString() + ' ฿';
+      }
+    });
+  </script>
+</body>
+
+</html>

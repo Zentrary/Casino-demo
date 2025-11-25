@@ -1,0 +1,1350 @@
+/* Wheel of Fortune Game Styles */
+
+:root {
+    --wheel-gray: #8e8e8e;
+    --wheel-green: #00c74d;
+    --wheel-blue: #3b82f6;
+    --wheel-purple: #a855f7;
+    --bg-dark: #0f1923;
+    --bg-darker: #0a1016;
+    --bg-panel: #1a2332;
+    --text-primary: #ffffff;
+    --text-secondary: #94a3b8;
+    --accent-green: #00ff88;
+    --accent-red: #ff4757;
+    --border-color: #2d3748;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, var(--bg-darker) 0%, var(--bg-dark) 100%);
+    color: var(--text-primary);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Game Container */
+.wheel-game-container {
+    padding: 20px;
+    max-width: 1920px;
+    margin: 80px auto 0;
+}
+
+/* Game Header */
+.wheel-game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: var(--bg-panel);
+    border-radius: 15px;
+    margin-bottom: 20px;
+    border: 1px solid var(--border-color);
+}
+
+.game-title-section h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+    color: var(--accent-green);
+}
+
+.game-title-section h1 i {
+    margin-right: 10px;
+}
+
+.game-subtitle {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.balance-section {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.balance-display {
+    background: rgba(0, 255, 136, 0.1);
+    padding: 12px 24px;
+    border-radius: 10px;
+    border: 1px solid var(--accent-green);
+}
+
+.balance-label {
+    color: var(--text-secondary);
+    margin-right: 10px;
+}
+
+.balance-amount {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent-green);
+}
+
+.currency {
+    margin-left: 5px;
+    color: var(--text-secondary);
+}
+
+.demo-mode-btn {
+    background: rgba(59, 130, 246, 0.2);
+    color: var(--blue);
+    border: 1px solid var(--wheel-blue);
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 600;
+}
+
+.demo-mode-btn:hover {
+    background: rgba(59, 130, 246, 0.3);
+    transform: translateY(-2px);
+}
+
+.demo-mode-btn.active {
+    background: var(--wheel-blue);
+    color: white;
+}
+
+/* Main Game Area - 3 Column Layout */
+.wheel-main-area {
+    display: grid;
+    grid-template-columns: 350px 1fr 350px;
+    gap: 20px;
+    min-height: 700px;
+}
+
+/* Left Panel: Betting Controls */
+.betting-controls-panel {
+    background: var(--bg-panel);
+    border-radius: 15px;
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    overflow-y: auto;
+    max-height: 85vh;
+}
+
+.betting-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.betting-tab {
+    flex: 1;
+    padding: 12px;
+    background: var(--bg-dark);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.betting-tab:hover {
+    border-color: var(--accent-green);
+    color: var(--text-primary);
+}
+
+.betting-tab.active {
+    background: linear-gradient(135deg, var(--accent-green) 0%, #00d46a 100%);
+    border-color: var(--accent-green);
+    color: white;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Betting Sections */
+.betting-section {
+    margin-bottom: 20px;
+}
+
+.section-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+/* Amount Input */
+.amount-input-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--bg-dark);
+    padding: 5px;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+    width: 100%;
+}
+
+.amount-btn {
+    background: var(--bg-panel);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 600;
+    white-space: nowrap;
+    min-width: 50px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.amount-btn:hover {
+    background: var(--accent-green);
+    border-color: var(--accent-green);
+    color: white;
+}
+
+.amount-input-group input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: center;
+    padding: 10px;
+    min-width: 0;
+    max-width: 100%;
+}
+
+.amount-input-group input:focus {
+    outline: none;
+}
+
+/* Quick Amounts */
+.quick-amounts {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.quick-amount-btn {
+    background: var(--bg-dark);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.quick-amount-btn:hover {
+    border-color: var(--accent-green);
+    color: var(--accent-green);
+}
+
+/* Color Selection Grid */
+.color-selection-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.color-bet-btn {
+    background: var(--bg-dark);
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    padding: 15px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+}
+
+.color-bet-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 20px rgba(0, 255, 136, 0.3);
+}
+
+.color-bet-btn.selected {
+    border-color: var(--accent-green);
+    background: rgba(0, 255, 136, 0.1);
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.4);
+}
+
+.color-indicator {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.gray-color {
+    background: linear-gradient(135deg, #9ca3af 0%, #6b7280 100%);
+}
+
+.green-color {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+}
+
+.blue-color {
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+}
+
+.purple-color {
+    background: linear-gradient(135deg, #a855f7 0%, #9333ea 100%);
+}
+
+.color-name {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.color-multiplier {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--accent-green);
+}
+
+.color-chance {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+/* Win Amount Display */
+.win-amount-display {
+    background: rgba(0, 255, 136, 0.1);
+    border: 1px solid var(--accent-green);
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+}
+
+.win-label {
+    color: var(--text-secondary);
+    margin-right: 10px;
+}
+
+.win-amount {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent-green);
+}
+
+/* Spin Now Button */
+.spin-now-btn {
+    width: 100%;
+    background: linear-gradient(135deg, var(--accent-green) 0%, #00d46a 100%);
+    border: none;
+    color: white;
+    padding: 15px;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.spin-now-btn:hover:not(:disabled) {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 25px rgba(0, 255, 136, 0.5);
+}
+
+.spin-now-btn:active:not(:disabled) {
+    transform: translateY(-1px);
+}
+
+.spin-now-btn:disabled {
+    background: var(--bg-dark);
+    color: var(--text-secondary);
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.demo-info {
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-top: 10px;
+}
+
+/* Auto Tab Specific */
+.number-bets-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.number-bets-input-group input {
+    background: var(--bg-dark);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 12px;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    text-align: center;
+    font-weight: 600;
+}
+
+.preset-bets {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+
+.preset-bet-btn {
+    background: var(--bg-dark);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 600;
+}
+
+.preset-bet-btn:hover {
+    border-color: var(--accent-green);
+    color: var(--accent-green);
+}
+
+/* Win/Loss Controls */
+.win-loss-controls {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.strategy-btn {
+    flex: 1;
+    background: var(--bg-dark);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 0.85rem;
+}
+
+.strategy-btn:hover {
+    border-color: var(--accent-green);
+}
+
+.strategy-btn.active {
+    background: var(--accent-green);
+    border-color: var(--accent-green);
+    color: white;
+}
+
+.percentage-input {
+    display: flex;
+    align-items: center;
+    background: var(--bg-dark);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 5px 10px;
+}
+
+.percentage-input input {
+    width: 60px;
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    font-weight: 600;
+    text-align: center;
+}
+
+.percentage-input input:disabled {
+    opacity: 0.5;
+}
+
+.percentage-input span {
+    color: var(--text-secondary);
+    margin-left: 5px;
+}
+
+/* Stop Conditions */
+.stop-conditions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.stop-condition-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.stop-condition-row span {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.stop-condition-row input {
+    width: 120px;
+    background: var(--bg-dark);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 8px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* Auto Bet Button */
+.auto-bet-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    border: none;
+    color: white;
+    padding: 15px;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.auto-bet-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 25px rgba(59, 130, 246, 0.5);
+}
+
+.auto-bet-btn.active {
+    background: linear-gradient(135deg, var(--accent-red) 0%, #e8344e 100%);
+}
+
+.bet-counter {
+    background: var(--bg-dark);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 15px;
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.bet-counter span {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.bet-counter strong {
+    color: var(--text-primary);
+}
+
+/* Advanced Tab Specific */
+.strategy-selection {
+    display: grid;
+    gap: 10px;
+}
+
+.strategy-option-btn {
+    background: var(--bg-dark);
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    padding: 15px;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-align: left;
+}
+
+.strategy-option-btn:hover {
+    border-color: var(--accent-green);
+}
+
+.strategy-option-btn.active {
+    border-color: var(--accent-green);
+    background: rgba(0, 255, 136, 0.1);
+}
+
+.strategy-name {
+    display: block;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 5px;
+}
+
+.strategy-desc {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+/* Custom Conditions */
+.custom-conditions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.condition-item {
+    background: var(--bg-dark);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.condition-text {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.condition-actions {
+    display: flex;
+    gap: 5px;
+}
+
+.condition-action-btn {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.condition-action-btn:hover {
+    background: var(--accent-red);
+    border-color: var(--accent-red);
+}
+
+.create-condition-btn {
+    width: 100%;
+    background: var(--bg-dark);
+    border: 2px dashed var(--border-color);
+    color: var(--text-primary);
+    padding: 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.create-condition-btn:hover {
+    border-color: var(--accent-green);
+    color: var(--accent-green);
+}
+
+/* Strategy Info Box */
+.strategy-info-box {
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid var(--wheel-blue);
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.strategy-info-box h4 {
+    color: var(--wheel-blue);
+    margin-bottom: 10px;
+}
+
+.strategy-info-box p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+/* Apply Strategy Button */
+.apply-strategy-btn {
+    width: 100%;
+    background: linear-gradient(135deg, var(--accent-green) 0%, #00d46a 100%);
+    border: none;
+    color: white;
+    padding: 15px;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.apply-strategy-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 25px rgba(0, 255, 136, 0.5);
+}
+
+/* Center Panel: Wheel Display */
+.wheel-display-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    position: relative;
+}
+
+.wheel-outer-container {
+    position: relative;
+    width: 600px;
+    height: 600px;
+}
+
+.wheel-pointer-indicator {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+.pointer-triangle {
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 30px solid var(--accent-green);
+    filter: drop-shadow(0 3px 10px rgba(0, 255, 136, 0.6));
+}
+
+#wheelCanvas {
+    border-radius: 50%;
+    filter: drop-shadow(0 10px 50px rgba(0, 0, 0, 0.8));
+}
+
+.wheel-center-circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120px;
+    height: 120px;
+    background: linear-gradient(135deg, var(--bg-panel) 0%, var(--bg-dark) 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 5px solid var(--accent-green);
+    box-shadow: 0 0 30px rgba(0, 255, 136, 0.5);
+    z-index: 5;
+}
+
+.wheel-icon {
+    font-size: 3rem;
+    color: var(--accent-green);
+    animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Result Display */
+.result-display {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--bg-panel);
+    border: 2px solid var(--accent-green);
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    z-index: 20;
+    min-width: 350px;
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.9);
+    animation: popIn 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes popIn {
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 0;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+}
+
+.result-icon {
+    font-size: 4rem;
+    margin-bottom: 15px;
+}
+
+.result-text {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: var(--accent-green);
+}
+
+.result-text.lose {
+    color: var(--accent-red);
+}
+
+.result-amount {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--accent-green);
+}
+
+.result-amount.negative {
+    color: var(--accent-red);
+}
+
+.result-details {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+}
+
+.result-details span {
+    color: var(--text-secondary);
+}
+
+.result-details strong {
+    color: var(--text-primary);
+    margin-left: 5px;
+}
+
+/* Right Panel: Game Info */
+.game-info-panel {
+    background: var(--bg-panel);
+    border-radius: 15px;
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    overflow-y: auto;
+    max-height: 85vh;
+}
+
+.info-section {
+    margin-bottom: 30px;
+}
+
+.info-section h3 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: var(--accent-green);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Statistics */
+.statistics-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.stat-item {
+    background: var(--bg-dark);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 12px;
+    text-align: center;
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-bottom: 5px;
+}
+
+.stat-value {
+    display: block;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.stat-value.green {
+    color: var(--accent-green);
+}
+
+.stat-value.red {
+    color: var(--accent-red);
+}
+
+/* Color Distribution */
+.color-distribution h4 {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 15px;
+}
+
+.distribution-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.distribution-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.distribution-row .color-indicator {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+.distribution-bar {
+    flex: 1;
+    height: 20px;
+    background: var(--bg-dark);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.bar-fill {
+    height: 100%;
+    transition: width 0.5s ease;
+}
+
+.gray-bar {
+    background: linear-gradient(90deg, #9ca3af 0%, #6b7280 100%);
+}
+
+.green-bar {
+    background: linear-gradient(90deg, #10b981 0%, #059669 100%);
+}
+
+.blue-bar {
+    background: linear-gradient(90deg, #3b82f6 0%, #2563eb 100%);
+}
+
+.purple-bar {
+    background: linear-gradient(90deg, #a855f7 0%, #9333ea 100%);
+}
+
+.distribution-percent {
+    min-width: 45px;
+    text-align: right;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+/* History List */
+.history-list {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.empty-history {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--text-secondary);
+}
+
+.empty-history i {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    opacity: 0.5;
+}
+
+.history-item {
+    background: var(--bg-dark);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 12px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s;
+}
+
+.history-item:hover {
+    border-color: var(--accent-green);
+}
+
+.history-color {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.history-color .color-indicator {
+    width: 30px;
+    height: 30px;
+}
+
+.history-info {
+    text-align: center;
+}
+
+.history-multiplier {
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.history-result {
+    text-align: right;
+}
+
+.history-amount {
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.history-amount.win {
+    color: var(--accent-green);
+}
+
+.history-amount.lose {
+    color: var(--accent-red);
+}
+
+.history-time {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background: var(--bg-panel);
+    border: 1px solid var(--border-color);
+    border-radius: 15px;
+    width: 90%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-header {
+    padding: 20px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h3 {
+    color: var(--text-primary);
+}
+
+.modal-close {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.modal-close:hover {
+    color: var(--accent-red);
+}
+
+.modal-body {
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.modal-footer {
+    padding: 20px;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+/* Condition Builder */
+.condition-builder {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.condition-row {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.condition-row label {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.condition-row select,
+.condition-row input {
+    background: var(--bg-dark);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 10px;
+    border-radius: 8px;
+}
+
+/* Buttons */
+.btn-primary,
+.btn-secondary {
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: none;
+}
+
+.btn-primary {
+    background: var(--accent-green);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #00d46a;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: var(--bg-dark);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+    border-color: var(--accent-green);
+}
+
+/* Sound Toggle */
+.sound-toggle {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--bg-panel);
+    border: 2px solid var(--accent-green);
+    color: var(--accent-green);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    z-index: 100;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+}
+
+.sound-toggle:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(0, 255, 136, 0.4);
+}
+
+.sound-toggle.muted {
+    color: var(--accent-red);
+    border-color: var(--accent-red);
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-green);
+}
+
+/* Responsive Design */
+@media (max-width: 1400px) {
+    .wheel-main-area {
+        grid-template-columns: 300px 1fr 300px;
+    }
+    
+    .wheel-outer-container {
+        width: 500px;
+        height: 500px;
+    }
+    
+    #wheelCanvas {
+        width: 500px;
+        height: 500px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .wheel-main-area {
+        grid-template-columns: 1fr;
+    }
+    
+    .betting-controls-panel,
+    .game-info-panel {
+        max-height: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .wheel-game-header {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .balance-section {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .balance-display {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .wheel-outer-container {
+        width: 400px;
+        height: 400px;
+    }
+    
+    #wheelCanvas {
+        width: 400px;
+        height: 400px;
+    }
+    
+    .color-selection-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .statistics-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .wheel-outer-container {
+        width: 300px;
+        height: 300px;
+    }
+    
+    #wheelCanvas {
+        width: 300px;
+        height: 300px;
+    }
+    
+    .wheel-center-circle {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .wheel-icon {
+        font-size: 2rem;
+    }
+    
+    .result-display {
+        min-width: 280px;
+        padding: 20px;
+    }
+    
+    .result-text {
+        font-size: 1.5rem;
+    }
+    
+    .result-amount {
+        font-size: 1.8rem;
+    }
+}
+
+/* Animations */
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(var(--spin-degrees));
+    }
+}
+
+.spinning {
+    animation: spin var(--spin-duration) cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+/* Loading Animation */
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.loading {
+    animation: pulse 1.5s ease-in-out infinite;
+}

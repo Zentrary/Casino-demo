@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dice Sum - Pyramid Casino</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/game.css">
+    <link rel="stylesheet" href="../../css/dicesum.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="../../images/Logo.png" alt="Pyramid Casino Logo" class="logo-img">
+                <span>Pyramid Casino</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../../index.html">หน้าแรก</a></li>
+                <li><a href="../all-games.html">เกมทั้งหมด</a></li>
+                <li><a href="../../index.html#promotions">โปรโมชั่น</a></li>
+                <li><a href="../../index.html#about">เกี่ยวกับเรา</a></li>
+                <li><a href="../../index.html#contact">ติดต่อ</a></li>
+            </ul>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Game Container -->
+    <div class="game-container">
+        <!-- Game Header -->
+        <div class="game-header">
+            <div class="game-title">
+                <img src="../../images/game images/dicelogo.png" alt="Dice Sum" class="game-logo">
+                <h1>Dice Sum</h1>
+            </div>
+            <div class="game-info">
+                <div class="balance-info">
+                    <span class="balance-label">ยอดเงิน:</span>
+                    <span class="balance-amount" id="balance">1000</span>
+                    <span class="currency">บาท</span>
+                </div>
+                <div class="game-stats">
+                    <span class="stat-item">
+                        <i class="fas fa-users"></i>
+                        <span id="playerCount">1,234</span>
+                    </span>
+                    <span class="stat-item">
+                        <i class="fas fa-star"></i>
+                        <span>4.7</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game Content -->
+        <div class="game-content">
+            <!-- Betting Panel -->
+            <div class="betting-panel">
+                <!-- Betting Tabs -->
+                <div class="betting-tabs">
+                    <button class="tab-btn active" data-tab="manual">Manual</button>
+                    <button class="tab-btn" data-tab="auto">Auto</button>
+                </div>
+
+                <!-- Manual Betting Panel -->
+                <div class="tab-panel active" id="manual">
+                    <!-- Amount Section -->
+                    <div class="amount-section">
+                        <label class="section-label">Amount</label>
+                        <div class="amount-controls">
+                            <div class="amount-input-group">
+                                <span class="currency-symbol">฿</span>
+                                <input type="number" id="betAmount" value="10" min="1" max="1000" step="1">
+                            </div>
+                            <div class="amount-control-buttons">
+                                <button class="amount-btn" id="betHalf">1/2</button>
+                                <button class="amount-btn" id="betDouble">2x</button>
+                                <button class="amount-btn" id="betUp">▲</button>
+                                <button class="amount-btn" id="betDown">▼</button>
+                            </div>
+                            <div class="preset-amounts">
+                                <button class="preset-btn" data-amount="10">10</button>
+                                <button class="preset-btn" data-amount="100">100</button>
+                                <button class="preset-btn" data-amount="1000">1.0k</button>
+                                <button class="preset-btn" data-amount="10000">10.0k</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sum Selection -->
+                    <div class="sum-selection">
+                        <label class="section-label">Choose Sum (2-12)</label>
+                        <div class="sum-grid">
+                            <button class="sum-btn" data-sum="2">2</button>
+                            <button class="sum-btn" data-sum="3">3</button>
+                            <button class="sum-btn" data-sum="4">4</button>
+                            <button class="sum-btn" data-sum="5">5</button>
+                            <button class="sum-btn" data-sum="6">6</button>
+                            <button class="sum-btn" data-sum="7">7</button>
+                            <button class="sum-btn" data-sum="8">8</button>
+                            <button class="sum-btn" data-sum="9">9</button>
+                            <button class="sum-btn" data-sum="10">10</button>
+                            <button class="sum-btn" data-sum="11">11</button>
+                            <button class="sum-btn" data-sum="12">12</button>
+                        </div>
+                    </div>
+
+                    <!-- Bet Button -->
+                    <button class="bet-button" id="betButton">
+                        <i class="fas fa-dice"></i>
+                        Roll Dice
+                    </button>
+                </div>
+
+                <!-- Auto Betting Panel -->
+                <div class="tab-panel" id="auto">
+                    <div class="auto-settings">
+                        <div class="auto-amount">
+                            <label class="section-label">Auto Amount</label>
+                            <div class="amount-input-group">
+                                <span class="currency-symbol">฿</span>
+                                <input type="number" id="autoAmount" value="10" min="1" max="1000" step="1">
+                            </div>
+                        </div>
+                        
+                        <div class="auto-sum">
+                            <label class="section-label">Auto Sum</label>
+                            <select id="autoSum">
+                                <option value="7">7 (Most Common)</option>
+                                <option value="6">6</option>
+                                <option value="8">8</option>
+                                <option value="5">5</option>
+                                <option value="9">9</option>
+                                <option value="4">4</option>
+                                <option value="10">10</option>
+                                <option value="3">3</option>
+                                <option value="11">11</option>
+                                <option value="2">2 (Rare)</option>
+                                <option value="12">12 (Rare)</option>
+                            </select>
+                        </div>
+
+                        <div class="auto-rounds">
+                            <label class="section-label">Rounds</label>
+                            <input type="number" id="autoRounds" value="10" min="1" max="100" step="1">
+                        </div>
+
+                        <button class="auto-button" id="autoButton">
+                            <i class="fas fa-play"></i>
+                            Start Auto
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Game Area -->
+            <div class="game-area">
+                <!-- Dice Display -->
+                <div class="dice-container">
+                    <div class="dice-wrapper">
+                        <div class="dice" id="dice1">
+                            <img src="../../images/game images/dicesum game image/1.png" alt="Dice 1">
+                        </div>
+                        <div class="dice" id="dice2">
+                            <img src="../../images/game images/dicesum game image/1.png" alt="Dice 2">
+                        </div>
+                    </div>
+                    <div class="dice-sum" id="diceSum">?</div>
+                </div>
+
+                <!-- Game Status -->
+                <div class="game-status" id="gameStatus">
+                    <h3>Choose your sum and roll the dice!</h3>
+                </div>
+
+                <!-- Recent Results -->
+                <div class="recent-results">
+                    <h4>Recent Results</h4>
+                    <div class="results-list" id="recentResults">
+                        <!-- Results will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Statistics Panel -->
+            <div class="stats-panel">
+                <h3>Statistics</h3>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-label">Total Bets</div>
+                        <div class="stat-value" id="totalBets">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Wins</div>
+                        <div class="stat-value" id="totalWins">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Win Rate</div>
+                        <div class="stat-value" id="winRate">0%</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Total Profit</div>
+                        <div class="stat-value" id="totalProfit">0</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="../../js/dicesum.js"></script>
+</body>
+</html>

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เกมทั้งหมด - Pyramid Casino</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/all-games.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="../images/Logo.png" alt="Pyramid Casino Logo" class="logo-img">
+                <span>Pyramid Casino</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../index.html">หน้าแรก</a></li>
+                <li><a href="all-games.html" class="active">เกมทั้งหมด</a></li>
+                <li><a href="deposit.html">เติมเงิน</a></li>
+            </ul>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Games Header -->
+    <section class="games-header">
+        <div class="container">
+            <h1 class="games-title">เกมทั้งหมด</h1>
+            <p class="games-subtitle">เลือกเกมส์ที่คุณชื่นชอบและเริ่มเล่นได้เลย</p>
+
+            <!-- Search and Filter -->
+            <div class="games-controls">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="gameSearch" placeholder="ค้นหาเกมส์...">
+                </div>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">ทั้งหมด</button>
+                    <button class="filter-btn" data-filter="slots">สล็อต</button>
+                    <button class="filter-btn" data-filter="table">โต๊ะเกมส์</button>
+                    <button class="filter-btn" data-filter="lottery">ลอตเตอรี่</button>
+                    <button class="filter-btn" data-filter="adventure">ผจญภัย</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Games Grid -->
+    <section class="games-grid-section">
+        <div class="container">
+            <div class="games-grid" id="gamesGrid">
+                <!-- สล็อตแมชชีน -->
+                <div class="game-card" data-category="slots" data-name="slot machine">
+                    <div class="game-image">
+                        <img src="../images/game images/Slotmachinelogo.png" alt="สล็อตแมชชีน">
+                        <div class="game-overlay">
+                            <button class="play-btn">เล่นเลย</button>
+                        </div>
+                    </div>
+                    <div class="game-info">
+                        <h3>Slot machine</h3>
+                        <p class="game-category">สล็อตแมชชีน</p>
+                        <div class="game-stats">
+                            <span class="players"><i class="fas fa-users"></i> 1,234</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.8</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- แบล็คแจ็ค -->
+                <div class="game-card" data-category="table" data-name="blackjack">
+                    <div class="game-image">
+                        <img src="../images/game images/blackjacklogo.png" alt="แบล็คแจ็ค">
+                        <div class="game-overlay">
+                            <button class="play-btn">เล่นเลย</button>
+                        </div>
+                    </div>
+                    <div class="game-info">
+                        <h3>Blackjack</h3>
+                        <p class="game-category">โต๊ะเกมส์</p>
+                        <div class="game-stats">
+                            <span class="players"><i class="fas fa-users"></i> 856</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.6</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Color Crash -->
+                <div class="game-card" data-category="table" data-name="color crash">
+                    <div class="game-image">
+                        <img src="../images/game images/doublelogo.png" alt="Color Crash">
+                        <div class="game-overlay">
+                            <button class="play-btn">เล่นเลย</button>
+                        </div>
+                    </div>
+                    <div class="game-info">
+                        <h3>Color Crash</h3>
+                        <p class="game-category">โต๊ะเกมส์</p>
+                        <div class="game-stats">
+                            <span class="players"><i class="fas fa-users"></i> 1,234</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.8</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- โป๊กเกอร์ -->
+                <div class="game-card" data-category="table" data-name="poker">
+                    <div class="game-image">
+                        <img src="../images/game images/pokerlogo.png" alt="โป๊กเกอร์">
+                        <div class="game-overlay">
+                            <button class="play-btn">เล่นเลย</button>
+                        </div>
+                    </div>
+                    <div class="game-info">
+                        <h3>Poker</h3>
+                        <p class="game-category">โต๊ะเกมส์</p>
+                        <div class="game-stats">
+                            <span class="players"><i class="fas fa-users"></i> 567</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.5</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ลูกเต๋าคลาสสิก -->
+                <div class="game-card" data-category="table" data-name="classic dice">
+                    <div class="game-image">
+                        <img src="../images/game images/Classic Dicelogo.png" alt="ลูกเต๋าคลาสสิก">
+                        <div class="game-overlay">
+                            <button class="play-btn">เล่นเลย</button>
+                        </div>
+                    </div>
+                    <div class="game-info">
+                        <h3>Classic Dice</h3>
+                        <p class="game-category">โต๊ะเกมส์</p>
+                        <div class="game-stats">
+                            <span class="players"><i class="fas fa-users"></i> 423</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.3</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- โยนเหรียญ -->
+                <div class="game-card" data-category="table" data-name="coin flip">
+                    <div class="game-image">
+                        <img src="../images/game images/CoinFliplogo.png" alt="โยนเหรียญ">
+                        <div class="game-overlay">
+                            <button class="play-btn">เล่นเลย</button>
+                        </div>
+                    </div>
+                    <div class="game-info">
+                        <h3>CoinFlip</h3>
+                        <p class="game-category">โต๊ะเกมส์</p>
+                        <div class="game-stats">
+                            <span class="players"><i class="fas fa-users"></i> 789</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.7</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- เคโน -->
+                <div class="game-card" data-category="lottery" data-name="keno">
+                    <div class="game-image">
+                        <img src="../images/game images/kenologo.png" alt="เคโน">
+                        <div class="game-overlay">
+                            <button class="play-btn">เล่นเลย</button>
+                        </div>
+                    </div>
+                    <div class="game-info">
+                        <h3>Keno</h3>
+                        <p class="game-category">ลอตเตอรี่</p>
+                        <div class="game-stats">
+                            <span class="players"><i class="fas fa-users"></i> 1,567</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.9</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ระเบิด -->
+                <div class="game-card" data-category="adventure" data-name="mines">
+                    <div class="game-image">
+                        <img src="../images/game images/mineslogo.png" alt="ระเบิด">
+                        <div class="game-overlay">
+                            <button class="play-btn">เล่นเลย</button>
+                        </div>
+                    </div>
+                    <div class="game-info">
+                        <h3>Mines</h3>
+                        <p class="game-category">ผจญภัย</p>
+                        <div class="game-stats">
+                            <span class="players"><i class="fas fa-users"></i> 2,345</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.8</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- บาคาร่า -->
+                <div class="game-card" data-category="table" data-name="baccarat">
+                    <div class="game-image">
+                        <img src="../images/game images/Baccaratlogo.png" alt="บาคาร่า">
+                        <div class="game-overlay">
+                            <button class="play-btn">เล่นเลย</button>
+                        </div>
+                    </div>
+                    <div class="game-info">
+                        <h3>Baccarat</h3>
+                        <p class="game-category">โต๊ะเกมส์</p>
+                        <div class="game-stats">
+                            <span class="players"><i class="fas fa-users"></i> 1,890</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.7</span>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Ring of Fortune -->
+                <div class="game-card" data-category="table" data-name="ringoffortune">
+                    <div class="game-image">
+                        <img src="../images/game images/Wheellogo.png" alt="Ring of Fortune">
+                        <div class="game-overlay">
+                            <button class="play-btn">เล่นเลย</button>
+                        </div>
+                    </div>
+                    <div class="game-info">
+                        <h3>Wheel</h3>
+                        <p class="game-category">โต๊ะเกมส์</p>
+                        <div class="game-stats">
+                            <span class="players"><i class="fas fa-users"></i> 1,567</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.8</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dice Sum Game -->
+                <div class="game-card" data-category="table" data-name="dice sum">
+                    <div class="game-image">
+                        <img src="../images/game images/dicelogo.png" alt="Dice Sum Game">
+                        <div class="game-overlay">
+                            <button class="play-btn">เล่นเลย</button>
+                        </div>
+                    </div>
+                    <div class="game-info">
+                        <h3>Dice Sum</h3>
+                        <p class="game-category">โต๊ะเกมส์</p>
+                        <div class="game-stats">
+                            <span class="players"><i class="fas fa-users"></i> 1,567</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.7</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Crash Game -->
+                <div class="game-card" data-category="adventure" data-name="crash">
+                    <div class="game-image">
+                        <img src="../images/game images/crash.jpg" alt="Crash Game">
+                        <div class="game-overlay">
+                            <button class="play-btn">เล่นเลย</button>
+                        </div>
+                    </div>
+                    <div class="game-info">
+                        <h3>Crash</h3>
+                        <p class="game-category">ผจญภัย</p>
+                        <div class="game-stats">
+                            <span class="players"><i class="fas fa-users"></i> 3,456</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.8</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Game Count Info -->
+            <div class="game-count-info">
+                <p>แสดงเกมทั้งหมด <span id="totalGames">12</span> เกม</p>
+            </div>
+        </div>
+    </section>
+
+
+    <link rel="stylesheet" href="../css/modal.css">
+    <script src="../js/script.js"></script>
+    <script src="../js/all-games.js"></script>
+</body>
+</html>

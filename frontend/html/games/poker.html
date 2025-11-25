@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>โป๊กเกอร์ - Pyramid Casino</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/game.css">
+    <link rel="stylesheet" href="../../css/poker.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="../../images/Logo.png" alt="Pyramid Casino Logo" class="logo-img">
+                <span>Pyramid Casino</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../../index.html">หน้าแรก</a></li>
+                <li><a href="../all-games.html">เกมทั้งหมด</a></li>
+                <li><a href="../../index.html#promotions">โปรโมชั่น</a></li>
+                <li><a href="../../index.html#about">เกี่ยวกับเรา</a></li>
+                <li><a href="../../index.html#contact">ติดต่อ</a></li>
+            </ul>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Game Container -->
+    <div class="game-container">
+        <!-- Game Header -->
+        <div class="game-header">
+            <div class="game-title">
+                <img src="../../images/game images/pokerlogo.png" alt="โป๊กเกอร์" class="game-logo">
+                <h1>โป๊กเกอร์</h1>
+            </div>
+            <div class="game-info">
+                <div class="balance-info">
+                    <span class="balance-label">ยอดเงิน:</span>
+                    <span class="balance-amount" id="balance">1000</span>
+                    <span class="currency">บาท</span>
+                </div>
+                <div class="game-stats">
+                    <span class="stat-item">
+                        <i class="fas fa-users"></i>
+                        <span id="playerCount">1,234</span>
+                    </span>
+                    <span class="stat-item">
+                        <i class="fas fa-star"></i>
+                        <span>4.7</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game Content -->
+        <div class="game-content">
+            <!-- Betting Panel -->
+            <div class="betting-panel">
+                <!-- Betting Tabs -->
+                <div class="betting-tabs">
+                    <button class="tab-btn active" data-tab="manual">Manual</button>
+                    <button class="tab-btn" data-tab="auto">Auto</button>
+                </div>
+
+                <!-- Manual Betting Panel -->
+                <div class="tab-panel active" id="manual">
+                    <!-- Amount Section -->
+                    <div class="amount-section">
+                        <label class="section-label">Amount</label>
+                        <div class="amount-controls">
+                            <div class="amount-input-group">
+                                <span class="currency-symbol">฿</span>
+                                <input type="number" id="betAmount" value="10" min="1" max="1000" step="1">
+                            </div>
+                            <div class="amount-control-buttons">
+                                <button class="amount-btn" id="betHalf">1/2</button>
+                                <button class="amount-btn" id="betDouble">2x</button>
+                                <button class="amount-btn" id="betUp">▲</button>
+                                <button class="amount-btn" id="betDown">▼</button>
+                            </div>
+                            <div class="preset-amounts">
+                                <button class="preset-btn" data-amount="10">10</button>
+                                <button class="preset-btn" data-amount="100">100</button>
+                                <button class="preset-btn" data-amount="1000">1.0k</button>
+                                <button class="preset-btn" data-amount="10000">10.0k</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="action-buttons">
+                        <button class="action-btn clear-btn" id="clearBets">
+                            <i class="fas fa-undo"></i>
+                            Clear
+                        </button>
+                        <button class="action-btn bet-btn-main" id="placeBet">
+                            <i class="fas fa-play"></i>
+                            Bet
+                        </button>
+                    </div>
+
+                    <!-- Game History -->
+                    <div class="game-history">
+                        <h3>ประวัติการเล่น</h3>
+                        <div class="history-list" id="historyList">
+                            <!-- History items will be added here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Auto Betting Panel -->
+                <div class="tab-panel" id="auto">
+                    <!-- Amount Section -->
+                    <div class="amount-section">
+                        <label class="section-label">Amount</label>
+                        <div class="amount-controls">
+                            <div class="amount-input-group">
+                                <span class="currency-symbol">฿</span>
+                                <input type="number" id="autoBetAmount" value="10" min="1" max="1000" step="1">
+                            </div>
+                            <div class="amount-control-buttons">
+                                <button class="amount-btn" id="autoBetHalf">1/2</button>
+                                <button class="amount-btn" id="autoBetDouble">2x</button>
+                                <button class="amount-btn" id="autoBetUp">▲</button>
+                                <button class="amount-btn" id="autoBetDown">▼</button>
+                            </div>
+                            <div class="preset-amounts">
+                                <button class="preset-btn" data-amount="10">10</button>
+                                <button class="preset-btn" data-amount="100">100</button>
+                                <button class="preset-btn" data-amount="1000">1.0k</button>
+                                <button class="preset-btn" data-amount="10000">10.0k</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Number of Bets -->
+                    <div class="number-bets-section">
+                        <label class="section-label">Number of Bets</label>
+                        <div class="number-bets-controls">
+                            <input type="text" id="numberOfBets" value="∞" placeholder="∞">
+                            <div class="preset-bets">
+                                <button class="preset-btn" data-bets="∞">∞</button>
+                                <button class="preset-btn" data-bets="10">10</button>
+                                <button class="preset-btn" data-bets="100">100</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Stop Conditions -->
+                    <div class="stop-conditions">
+                        <div class="stop-condition">
+                            <label class="section-label">Stop on win</label>
+                            <input type="number" id="stopOnWin" value="0" min="0" placeholder="0">
+                        </div>
+                        <div class="stop-condition">
+                            <label class="section-label">Stop on loss</label>
+                            <input type="number" id="stopOnLoss" value="0" min="0" placeholder="0">
+                        </div>
+                    </div>
+
+                    <!-- Auto Bet Action -->
+                    <div class="action-buttons">
+                        <button class="action-btn auto-bet-btn" id="startAutoBet">
+                            <i class="fas fa-play"></i>
+                            Start Auto Bet
+                        </button>
+                    </div>
+
+                    <!-- Disclaimer -->
+                    <div class="disclaimer">
+                        <i class="fas fa-question-circle"></i>
+                        <p>Use of script is optional and players must take full responsibility for any attendant risks. We will not be held liable in this regard.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Game Table -->
+            <div class="game-table">
+                <!-- Table Header -->
+                <div class="table-header">
+                    <h2>POKER</h2>
+                    <div class="table-info">
+                        <span class="poker-info">TEXAS HOLD'EM POKER</span>
+                        <div class="game-progress">
+                            <span class="player-score">PLAYER</span>
+                            <span class="vs">vs</span>
+                            <span class="dealer-score">DEALER</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card Areas -->
+                <div class="card-areas">
+                    <!-- Dealer Cards -->
+                    <div class="card-area dealer-area">
+                        <div class="area-label">DEALER</div>
+                        <div class="cards-container" id="dealerCards">
+                            <!-- Cards will be added here -->
+                        </div>
+                        <div class="hand-info" id="dealerHandInfo">Waiting...</div>
+                    </div>
+
+                    <!-- Player Cards -->
+                    <div class="card-area player-area">
+                        <div class="area-label">PLAYER</div>
+                        <div class="cards-container" id="playerCards">
+                            <!-- Cards will be added here -->
+                        </div>
+                        <div class="hand-info" id="playerHandInfo">Waiting...</div>
+                    </div>
+                </div>
+
+                <!-- Community Cards -->
+                <div class="community-cards">
+                    <div class="community-label">COMMUNITY CARDS</div>
+                    <div class="cards-container" id="communityCards">
+                        <!-- Community cards will be added here -->
+                    </div>
+                </div>
+
+                <!-- Game Controls -->
+                <div class="game-controls">
+                    <button class="control-btn deal-btn" id="dealCards">
+                        <i class="fas fa-play"></i>
+                        Deal Cards
+                    </button>
+                    <button class="control-btn fold-btn" id="foldBtn">
+                        <i class="fas fa-hand-paper"></i>
+                        Fold
+                    </button>
+                    <button class="control-btn call-btn" id="callBtn">
+                        <i class="fas fa-hand-point-up"></i>
+                        Call
+                    </button>
+                    <button class="control-btn raise-btn" id="raiseBtn">
+                        <i class="fas fa-arrow-up"></i>
+                        Raise
+                    </button>
+                </div>
+
+                <!-- Pot Information -->
+                <div class="pot-info">
+                    <div class="pot-amount">
+                        <span class="pot-label">POT:</span>
+                        <span class="pot-value" id="potAmount">0</span>
+                    </div>
+                    <div class="current-bet">
+                        <span class="bet-label">CURRENT BET:</span>
+                        <span class="bet-value" id="currentBet">0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Game Result Modal -->
+    <div class="game-result-modal" id="gameResultModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">ผลการเล่น</h3>
+                <button class="close-modal" id="closeModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="result-icon" id="resultIcon">🎉</div>
+                <div class="result-message" id="resultMessage">คุณชนะ!</div>
+                <div class="result-amount" id="resultAmount">+100 บาท</div>
+                <div class="result-details" id="resultDetails">
+                    <div class="player-result">
+                        <span class="label">Player Hand:</span>
+                        <span class="value" id="playerResult">High Card</span>
+                    </div>
+                    <div class="dealer-result">
+                        <span class="label">Dealer Hand:</span>
+                        <span class="value" id="dealerResult">High Card</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" id="continueBtn">เล่นต่อ</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../../js/script.js"></script>
+    <script src="../../js/game.js"></script>
+    <script src="../../js/poker.js"></script>
+</body>
+</html>
